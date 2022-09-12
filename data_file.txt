@@ -1,0 +1,1 @@
+{"Student": {"firstname": "Ivasyk", "lastname": "Bulkin", "phone": "657464646", "group": "Python11"}, "Teacher": {"firstname": "Ludmila", "lastname": "Traser", "phone": "0500003325", "subject": "C++17"}}
