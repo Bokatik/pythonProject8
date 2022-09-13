@@ -1,3 +1,4 @@
+import json
 
 class Person:
     __firstname = str()
@@ -38,6 +39,11 @@ class Person:
         with open(filename, 'a') as file:
             file.write(self.__str__() + '\n')
 
+    def to_dict(self):
+        return {'firstname': self.__firstname,
+                'lastname': self.__lastname,
+                'phone': self.__phone,
+                }
 
 class Student(Person):
     __group = str()
@@ -63,6 +69,10 @@ class Student(Person):
             self.set_phone(res[2])
             self.set_group(res[3])
 
+    def to_dict(self):
+        dic_student = super().to_dict()
+        dic_student.update({'group': self.__group})
+        return dic_student
 
 class Teacher(Person):
     __subject = str()
@@ -88,6 +98,10 @@ class Teacher(Person):
             self.set_phone(res[2])
             self.set_subject(res[3])
 
+    def to_dict(self):
+        dic_teacher = super().to_dict()
+        dic_teacher.update({'subject': self.__subject})
+        return dic_teacher
 
 
 li = []
@@ -102,9 +116,12 @@ li.append(Teacher('Ludmila', 'Traser', '0500003325', 'C++17'))
 for i in li:
     i.to_file('test.txt')
 
+
+
 class Group:
     __name = str()
     __li = list()
+
 
     def __init__(self, name: str):
         self.set_name(name)
@@ -128,37 +145,45 @@ class Group:
                 if person[0] == 'teacher':
                     self.__li.append(Teacher(person[1], person[2], person[3], person[4]))
 
-for i in li:
-     print(i)
+class GroupList:
 
-li[0].to_file('test.txt')
+    __groupList = []
 
-li[0].from_file('test.txt')
 
-import json
+    def add(self, obj: Person):
+        self.__groupList.append(obj)
 
-student_li = {
-    'firstname': 'Ivasyk',
-    'lastname': 'Bulkin',
-    'phone': '657464646',
-    'group': 'Python11',
-}
-teacher_li = {
-    'firstname': 'Ludmila',
-    'lastname': 'Traser',
-    'phone': '0500003325',
-    'subject': 'C++17',
-}
-group = {
-    'Student': student_li,
-    'Teacher': teacher_li,
-}
-json_string = json.dumps(group)
-print(json_string)
 
-with open('data_file.txt', 'w', encoding='utf-8') as fl:
-    json.dump(group, fl, ensure_ascii=False)
+    def __dict__(self):
+        l = []
+        for i in self.__groupList:
+            l.append(i.to_dict())
+        return l
 
-with open('data_file.txt', 'r', encoding='utf-8') as fl:
-    des = json.load(fl)
-    print(des)
+    def serialize(self, filename: str):
+        with open(filename, 'w') as file:
+            json.dump(self.__dict__(), file, indent=2)
+
+
+    def deserialize(self, filename: str):
+        with open(filename, 'r') as file:
+            res = json.load(file)
+        print(res)
+
+
+gr = GroupList()
+
+# for i in li:
+#     gr.add(i)
+#
+# gr.serialize('data_file.txt')
+gr.deserialize('data_file.txt')
+
+# for i in li:
+#      print(i)
+#
+# li[0].to_file('test.txt')
+#
+# li[0].from_file('test.txt')
+#
+

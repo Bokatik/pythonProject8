@@ -1,1 +1,44 @@
-{"Student": {"firstname": "Ivasyk", "lastname": "Bulkin", "phone": "657464646", "group": "Python11"}, "Teacher": {"firstname": "Ludmila", "lastname": "Traser", "phone": "0500003325", "subject": "C++17"}}
+[
+  {
+    "firstname": "Ivasyk",
+    "lastname": "Bulkin",
+    "phone": "trinolyatrulyalya",
+    "group": "Python11"
+  },
+  {
+    "firstname": "Grigoiy",
+    "lastname": "Terkin",
+    "phone": "+387415874165",
+    "group": "Python21"
+  },
+  {
+    "firstname": "Anna",
+    "lastname": "Chechetkina",
+    "phone": "+04478451235",
+    "group": "C++14"
+  },
+  {
+    "firstname": "Svetlana",
+    "lastname": "Bulkina",
+    "phone": "trinolyatrulyalya2",
+    "group": "Python11"
+  },
+  {
+    "firstname": "Anatloiy",
+    "lastname": "Fedorov",
+    "phone": "0991234756",
+    "group": "C++17"
+  },
+  {
+    "firstname": "Evgeniy",
+    "lastname": "Samsonov",
+    "phone": "0632586477",
+    "subject": "Python11"
+  },
+  {
+    "firstname": "Ludmila",
+    "lastname": "Traser",
+    "phone": "0500003325",
+    "subject": "C++17"
+  }
+]
